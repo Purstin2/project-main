@@ -57,7 +57,7 @@ const ProgressBar: React.FC = () => {
   return (
     <div className="px-4 py-3 bg-[#F7F3FF] border-b border-gray-100 sticky top-0 z-20">
       <div className="w-full max-w-md mx-auto flex items-center space-x-4">
-        {/* Botão de voltar */}
+        {/* Botões de navegação (botões de desenvolvedor) comentados
         <button 
           onClick={handleGoBack}
           className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 hover:bg-purple-50 transition-colors"
@@ -65,6 +65,7 @@ const ProgressBar: React.FC = () => {
         >
           <ChevronLeft size={18} className="text-[#7432B4]" />
         </button>
+        */}
         
         {/* Barra de progresso */}
         <div className="flex-1 h-2 bg-[#E9E0F4] rounded-full overflow-hidden">
@@ -76,7 +77,7 @@ const ProgressBar: React.FC = () => {
           />
         </div>
         
-        {/* Botão de avançar */}
+        {/* Botões de navegação (botões de desenvolvedor) comentados
         <button 
           onClick={handleGoForward}
           className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 hover:bg-purple-50 transition-colors"
@@ -85,6 +86,7 @@ const ProgressBar: React.FC = () => {
         >
           <ChevronRight size={18} className={`${isLastStep ? "text-gray-300" : "text-[#7432B4]"}`} />
         </button>
+        */}
       </div>
     </div>
   );
