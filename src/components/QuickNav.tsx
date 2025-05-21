@@ -7,7 +7,7 @@ const QuickNav: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
-  const [isDev, setIsDev] = useState(true); // Toggle para controlar exibição em produção
+  const [isDev, setIsDev] = useState(false); // Toggle para controlar exibição em produção - alterado para false por padrão
 
   // Rotas atualizadas para refletir o novo fluxo
   const routes = [

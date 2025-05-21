@@ -24,6 +24,8 @@ import Checkout from './components/Checkout';
 import SuccessPage from './components/SuccessPage';
 import ProgressBar from './components/ProgressBar';
 //import ExitIntentModal from './components/ExitIntentModal';
+// Importação do componente de navegação rápida para desenvolvedores (comentado)
+// import QuickNav from './components/QuickNav';
 import { QuizProvider } from './context/QuizContext';
 import { trackPageView, trackEvent, PixelEvents } from './utils/analytics';
 
@@ -58,6 +60,8 @@ function App() {
     <div className="min-h-screen bg-white flex flex-col overflow-hidden">
       <QuizProvider>
         <ProgressBar />
+        {/* Componente de navegação rápida para desenvolvedores (comentado) */}
+        {/* <QuickNav /> */}
         
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
