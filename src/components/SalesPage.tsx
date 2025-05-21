@@ -82,7 +82,7 @@ const SalesPage: React.FC = () => {
         'A maioria dos usuários percebe melhoras na mobilidade e bem-estar já na primeira semana. Para resultados mais significativos como perda de peso, ganho de força ou redução da ansiedade, o protocolo completo de 21 dias oferece transformações notáveis e sustentáveis.',
     },
     {
-      question: 'Como recebo o material após a compra?',
+      question: 'Como recebo o material após a compra? ',
       answer:
         'Imediatamente após a compra, você recebe um email com o link para baixar o material. Todo o conteúdo estará disponível em formato PDF de alta qualidade, otimizado para visualização em qualquer dispositivo.',
     },
