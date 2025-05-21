@@ -55,20 +55,10 @@ const ProgressBar: React.FC = () => {
   const isLastStep = currentIndex === selectionRoutes.length - 1;
   
   return (
-    <div className="px-4 py-3 bg-[#F7F3FF] border-b border-gray-100 sticky top-0 z-20">
-      <div className="w-full max-w-md mx-auto flex items-center space-x-4">
-        {/* Botões de navegação (botões de desenvolvedor) comentados
-        <button 
-          onClick={handleGoBack}
-          className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 hover:bg-purple-50 transition-colors"
-          aria-label="Voltar"
-        >
-          <ChevronLeft size={18} className="text-[#7432B4]" />
-        </button>
-        */}
-        
-        {/* Barra de progresso */}
-        <div className="flex-1 h-2 bg-[#E9E0F4] rounded-full overflow-hidden">
+    <div className="px-4 py-3.5 bg-[#F7F3FF] border-b border-gray-100 sticky top-0 z-20">
+      <div className="w-full max-w-sm mx-auto flex justify-center items-center py-1">
+        {/* Barra de progresso centralizada e compacta */}
+        <div className="w-full h-2 bg-[#E9E0F4] rounded-full overflow-hidden">
           <motion.div 
             className="h-full bg-[#7432B4]"
             initial={{ width: `${progressPercentage > 5 ? progressPercentage - 10 : 0}%` }}
@@ -76,17 +66,6 @@ const ProgressBar: React.FC = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
           />
         </div>
-        
-        {/* Botões de navegação (botões de desenvolvedor) comentados
-        <button 
-          onClick={handleGoForward}
-          className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 hover:bg-purple-50 transition-colors"
-          aria-label="Avançar"
-          disabled={isLastStep}
-        >
-          <ChevronRight size={18} className={`${isLastStep ? "text-gray-300" : "text-[#7432B4]"}`} />
-        </button>
-        */}
       </div>
     </div>
   );
