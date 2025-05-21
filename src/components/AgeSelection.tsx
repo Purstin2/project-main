@@ -50,8 +50,8 @@ const AgeSelection: React.FC = () => {
 
         {/* Title - Ênfase no problema (CUIDADOR) */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#2D1441] text-center leading-tight mb-4 max-w-3xl">
-  CRIE SEU MÉTODO PERSONALIZADO DE{' '}
-  <span className="text-[#7432B4]"> YOGA NA CADEIRA </span> QUE ELIMINARÁ SUAS DORES NO CORPO
+  CRIE SEU PERFIL PERSONALIZADO {' '}
+  <span className="text-[#7432B4]"> YOGA NA CADEIRA </span> QUE ALIVIARÁ SUAS DORES NO CORPO EM 21 DIAS
 </h1>
 
         {/* Subtitle - Problema + Solução (CUIDADOR) */}
