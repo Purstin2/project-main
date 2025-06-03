@@ -40,6 +40,7 @@ interface QuizContextType {
   email: string | null;
   setEmail: (email: string | null) => void;
   sessionId: string | null;
+  preserveUtmParams: (path: string) => string;
 }
 
 const QuizContext = createContext<QuizContextType | undefined>(undefined);
@@ -70,11 +71,48 @@ export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
   const [selectedPlan, setSelectedPlan] = useState<'starter' | 'complete' | 'premium' | null>('complete');
   const [email, setEmail] = useState<string | null>(null);
 
+  // Function to preserve UTM parameters
+  const preserveUtmParams = (path: string): string => {
+    const currentUrl = new URL(window.location.href);
+    const utmParams = new URLSearchParams();
+    
+    // List of UTM parameters to preserve
+    const utmKeys = [
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+      'utm_id',
+      'subid',
+      'subid1',
+      'subid2',
+      'subid3',
+      'subid4',
+      'subid5'
+    ];
+
+    // Copy existing UTM parameters
+    utmKeys.forEach(key => {
+      const value = currentUrl.searchParams.get(key);
+      if (value) {
+        utmParams.append(key, value);
+      }
+    });
+
+    // If we have UTM parameters, append them to the path
+    const utmString = utmParams.toString();
+    if (utmString) {
+      return `${path}${path.includes('?') ? '&' : '?'}${utmString}`;
+    }
+
+    return path;
+  };
+
   // Initialize session on first load
   useEffect(() => {
     const initSession = async () => {
       try {
-        // Generate a random session ID instead of using Supabase
         const randomSessionId = Math.random().toString(36).substring(2, 15);
         setSessionId(randomSessionId);
       } catch (err) {
@@ -88,7 +126,6 @@ export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
   // Update session progress on route change
   useEffect(() => {
     const handleRouteChange = () => {
-      // Local tracking of route changes - no Supabase
       console.log('Route changed to:', window.location.pathname);
     };
 
@@ -121,7 +158,7 @@ export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
     if (currentIndex === -1 || currentIndex === quizSequence.length - 1) {
       return '/';
     }
-    return quizSequence[currentIndex + 1];
+    return preserveUtmParams(quizSequence[currentIndex + 1]);
   };
 
   const [goals, setGoals] = useState<Goal[]>([
@@ -205,7 +242,8 @@ export const QuizProvider: React.FC<QuizProviderProps> = ({ children }) => {
         setSelectedPlan,
         email,
         setEmail,
-        sessionId
+        sessionId,
+        preserveUtmParams
       }}
     >
       {children}
