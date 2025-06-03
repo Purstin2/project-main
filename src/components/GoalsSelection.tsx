@@ -16,7 +16,7 @@ const CustomHeader = () => {
 
 const GoalsSelection: React.FC = () => {
   const navigate = useNavigate();
-  const { goals, toggleGoal, setSelectedGoalsCount } = useQuiz();
+  const { goals, toggleGoal, setSelectedGoalsCount, preserveUtmParams } = useQuiz();
   const [isProcessing, setIsProcessing] = useState(false);
   const [points, setPoints] = useState(0);
   const [selectedCount, setSelectedCount] = useState(0);
@@ -24,7 +24,6 @@ const GoalsSelection: React.FC = () => {
   const [progressStage, setProgressStage] = useState(0);
   const [userInsight, setUserInsight] = useState('');
 
-  // Insights revisados com foco na mobilidade articular
   const insights = {
     'lose-weight': 'O excesso de peso sobrecarrega as articulações, intensificando dores. Nosso método ativa o metabolismo e alivia a pressão nas articulações.',
     'manage-mood': 'Dores crônicas frequentemente levam a estresse e ansiedade. Nossos exercícios liberam endorfinas naturais que melhoram o humor enquanto reabilitam seu corpo.',
@@ -66,11 +65,10 @@ const GoalsSelection: React.FC = () => {
   const handleNextStep = () => {
     if (selectedCount > 0) {
       setSelectedGoalsCount(selectedCount);
-      navigate('/body-type');
+      navigate(preserveUtmParams('/body-type'));
     }
   };
 
-  // Reordenação dos objetivos com foco em mobilidade e articulações
   const prioritizedGoals = [...goals].sort((a, b) => {
     const priorityOrder = {
       'improve-mobility': 1,    // Prioridade máxima para mobilidade
@@ -92,7 +90,6 @@ const GoalsSelection: React.FC = () => {
 
         <main className="flex-1 flex flex-col px-4">
           <div className="w-full max-w-md mx-auto">
-            {/* ARQUÉTIPO CUIDADOR - Empatia com dores */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -160,7 +157,6 @@ const GoalsSelection: React.FC = () => {
               ))}
             </section>
 
-            {/* ARQUÉTIPO MAGO - Apresentando a possibilidade de transformação */}
             <div className="space-y-4 mb-5">
               <AnimatePresence>
                 {progressStage >= 3 && (
