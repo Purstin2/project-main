@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const AgeSelection: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { setAgeRange, getNextRoute } = useQuiz();
+  const { setAgeRange, getNextRoute, preserveUtmParams } = useQuiz();
   const [recentUsers, setRecentUsers] = useState(0);
 
   useEffect(() => {
@@ -24,7 +24,8 @@ const AgeSelection: React.FC = () => {
 
   const handleAgeSelection = (age: '35-44' | '45-54' | '55-64' | '65+') => {
     setAgeRange(age);
-    navigate(getNextRoute(location.pathname));
+    const nextRoute = getNextRoute(location.pathname);
+    navigate(preserveUtmParams(nextRoute));
   };
 
   const ageImages = {
