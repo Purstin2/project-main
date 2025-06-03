@@ -6,7 +6,7 @@ import AnimatedPage from './AnimatedPage';
 
 const DreamBody: React.FC = () => {
   const navigate = useNavigate();
-  const { dreamBody, setDreamBody } = useQuiz();
+  const { dreamBody, setDreamBody, preserveUtmParams } = useQuiz();
   const [selected, setSelected] = useState<string | null>(dreamBody || null);
 
   const bodyTypes = [
@@ -40,7 +40,7 @@ const DreamBody: React.FC = () => {
     setSelected(type);
     setDreamBody(type);
     setTimeout(() => {
-      navigate('/target-zones');
+      navigate(preserveUtmParams('/target-zones'));
     }, 300);
   };
 
@@ -69,7 +69,6 @@ const DreamBody: React.FC = () => {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  {/* Imagem com arredondamento consistente */}
                   <div className="w-16 h-16 rounded-xl overflow-hidden mr-3 shadow-sm flex-shrink-0">
                     <motion.img 
                       src={type.image}
@@ -85,7 +84,6 @@ const DreamBody: React.FC = () => {
                     <div className="text-sm text-gray-500">{type.description}</div>
                   </div>
 
-                  {/* Indicador de seleção */}
                   {selected === type.value && (
                     <motion.div
                       initial={{ scale: 0 }}

@@ -6,7 +6,7 @@ import AnimatedPage from './AnimatedPage';
 
 const BodyType: React.FC = () => {
   const navigate = useNavigate();
-  const { setBodyType } = useQuiz();
+  const { setBodyType, preserveUtmParams } = useQuiz();
   const [selected, setSelected] = useState<string | null>(null);
 
   const bodyTypes = [
@@ -34,7 +34,7 @@ const BodyType: React.FC = () => {
     setSelected(type);
     setBodyType(type);
     setTimeout(() => {
-      navigate('/dream-body');
+      navigate(preserveUtmParams('/dream-body'));
     }, 300);
   };
 
@@ -60,7 +60,6 @@ const BodyType: React.FC = () => {
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  {/* Imagem com tamanho consistente e arredondamento */}
                   <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
                     <img 
                       src={type.image} 
@@ -69,13 +68,11 @@ const BodyType: React.FC = () => {
                     />
                   </div>
 
-                  {/* Texto */}
                   <div className="text-left flex-1 ml-3">
                     <div className="font-medium text-gray-800">{type.label}</div>
                     <div className="text-sm text-gray-500">{type.description}</div>
                   </div>
 
-                  {/* Indicador de seleção */}
                   {selected === type.value && (
                     <motion.div
                       initial={{ scale: 0 }}
