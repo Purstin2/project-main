@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Star, Award, Clock, Check } from 'lucide-react';
 import { useQuiz } from '../context/QuizContext';
 import { motion } from 'framer-motion';
+import Header from './Header';
 
 const AgeSelection: React.FC = () => {
   const navigate = useNavigate();
@@ -37,8 +38,8 @@ const AgeSelection: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <Header />
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 lg:px-8 pt-10 pb-6">
-        {/* Badge de Quiz/Teste - ARQUÉTIPO CUIDADOR */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,18 +50,15 @@ const AgeSelection: React.FC = () => {
           <span>AVALIAÇÃO GRATUITA DE MOBILIDADE</span>
         </motion.div>
 
-        {/* Title - Ênfase no problema (CUIDADOR) */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#2D1441] text-center leading-tight mb-4 max-w-3xl">
-  CRIE SEU PERFIL PERSONALIZADO {' '}
-  <span className="text-[#7432B4]"> YOGA NA CADEIRA </span> QUE ALIVIARÁ SUAS DORES NO CORPO EM 21 DIAS
-</h1>
+          CRIE SEU PERFIL PERSONALIZADO {' '}
+          <span className="text-[#7432B4]">YOGA NA CADEIRA</span> QUE ALIVIARÁ SUAS DORES NO CORPO EM 21 DIAS
+        </h1>
 
-        {/* Subtitle - Problema + Solução (CUIDADOR) */}
         <p className="text-gray-600 text-sm sm:text-base text-center mb-8 max-w-md sm:max-w-lg lg:max-w-xl">
           <span className="font-semibold">Para mulheres que sofrem com limitações de movimento e dores articulares.</span> Método desenvolvido por fisioterapeutas especializados em saúde feminina.
         </p>
 
-        {/* Age Selection Buttons */}
         <div className="grid grid-cols-2 gap-4 w-full max-w-md sm:max-w-lg lg:max-w-2xl mb-10">
           {[['35-44', '45-54'], ['55-64', '65+']].map((row, i) => (
             <React.Fragment key={i}>
@@ -87,7 +85,6 @@ const AgeSelection: React.FC = () => {
           ))}
         </div>
 
-        {/* Social Proof - Confiança (SÁBIO) */}
         <div className="w-full max-w-md sm:max-w-lg lg:max-w-2xl mb-10">
           <div className="flex items-center justify-center gap-4 mb-3">
             <div className="flex -space-x-2">
@@ -126,7 +123,6 @@ const AgeSelection: React.FC = () => {
           </p>
         </div>
 
-        {/* Footer Text */}
         <div className="text-xs sm:text-sm text-gray-500 text-center max-w-md sm:max-w-lg lg:max-w-2xl px-4">
           Ao continuar, eu concordo com os{' '}
           <span className="underline">Termos de Serviço</span> e{' '}
